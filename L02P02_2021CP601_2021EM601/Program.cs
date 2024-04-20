@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<clientesDbContext>(opt =>
         opt.UseSqlServer(
-            builder.Configuration.GetConnectionString("usuariosDBDbConnection")
+            builder.Configuration.GetConnectionString("usuariosDBConnection")
             )
 );
 

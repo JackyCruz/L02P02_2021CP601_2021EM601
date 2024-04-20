@@ -42,13 +42,13 @@
 			<label>Departamento</label>
 		</div>
 		<div class="col-sm-4">
-			@Html.DropDownList("id", ViewData["listadoDepartamento"] as SelectList, "Seleccione un departamento", new { @class = "form-control" })
+			@Html.DropDownList("id_departamento", ViewData["listadoDepartamento"] as SelectList, "Seleccione un departamento", new { @class = "form-control" })
 		</div>
 		<div class="col-sm-2">
 			@Html.Label("lblPuesto", "Puesto")
 		</div>
 		<div class="col-sm-4">
-			@Html.DropDownList("id", ViewData["listadoDePuestos"] as SelectList, "Seleccione un Puesto", new { @class = "form-control" })
+			@Html.DropDownList("id_puesto", ViewData["listadoDePuestos"] as SelectList, "Seleccione un Puesto", new { @class = "form-control" })
 		</div>
 	</div>
 
@@ -57,13 +57,14 @@
 			<label>Genero</label>
 		</div>
 		<div class="col-sm-4">
-			@Html.RadioButton("Genero", "Masculino", true, new{id = "masculino"})
+			@Html.RadioButton("genero", "m", true, new { id = "m" })
 			Masculino
 
-			@Html.RadioButton("Genero", "Femenino", false, new { id = "femenino" })
+			@Html.RadioButton("genero", "f", false, new { id = "f" })
 			Femenino
 		</div>
 	</div>
+
 
 
 
@@ -100,8 +101,8 @@
 				<tr>
 					<td>@clientes.Nombre Completo</td>
 					<td>@clientes.Email</td>
-					<td>@clientes.Dirección</td>
-					<td>@clientes.Departamento</td>
+					<td>@clientes.Direccion</td>
+					<td>@clientes.departamentos</td>
 					<td>@clientes.Genero</td>
 					<td>@clientes.Puesto</td>
 				</tr>

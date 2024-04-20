@@ -25,27 +25,32 @@ namespace L02P02_2021CP601_2021EM601.Controllers
 
 			ViewData["listadoDePuestos"] = new SelectList(listaEstadoDeclientes, "id", "puesto");
 
-			//Extraer listado de equipos
-			var listadoDeclientes = (from e in _clientesDbContext.clientes
-                                    join m in _clientesDbContext.departamentos on e.id equals m.id
-                                    select new
+			//Extraer listado de clientes
+			var listadoDeclientes = (from c in _clientesDbContext.clientes
+                                    join d in _clientesDbContext.departamentos on c.id_departamento equals d.id
+									 join p in _clientesDbContext.puestos on c.id_puesto equals p.id
+									 select new
                                     {
-                                        nombre = e.nombre,
-                                        descripcion = e.direccion,
-                                        marca_id = e.id,
-                                        marca_nombre = m.departamento
+                                        Nombre = c.nombre,
+										Apellido = c.apellido,
+										Email = c.email,
+                                        Direccion = c.direccion,
+                                        departamentos = d.departamento,
+                                        Genero = c.genero,
+                                        Puesto = p.puesto
+
                                     }).ToList();
             ViewData["ListadoClientes"] = listadoDeclientes;
 
             return View();
         }
 
-        public IActionResult CrearEquipos(clientes nuevoCliente)
+        public IActionResult Crearusuarios(clientes nuevoCliente)
         {
             _clientesDbContext.Add(nuevoCliente);
             _clientesDbContext.SaveChanges();
 
-            return View();
-        }
+			return RedirectToAction("Index");
+		}
     }
 }
