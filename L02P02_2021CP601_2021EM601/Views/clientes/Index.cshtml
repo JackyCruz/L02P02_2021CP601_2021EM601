@@ -1,0 +1,114 @@
+﻿<h1>Creación de usuarios</h1>
+<br />
+<form asp-action="Crearusuarios">
+	@*Inicio del formulario*@
+
+	<div class="form-group row mb-4">
+		<div class="col-sm-2">
+			<label>Nombre</label>
+		</div>
+		<div class="col-sm-4">
+			@Html.TextBox("nombre", "", new { @class = "form-control" })
+		</div>
+		<div class="col-sm-2">
+			@Html.Label("lblApellido", "Apellido")
+		</div>
+		<div class="col-sm-4">
+			@Html.TextBox("Apellido", "", new { @class = "form-control" })
+		</div>
+	</div>
+
+	<div class="form-group row mb-4">
+		<div class="col-sm-2">
+			<label>Email</label>
+		</div>
+		<div class="col-sm-4">
+			@Html.TextBox("Email", "", new { @class = "form-control" })
+		</div>
+
+	</div>
+	<div class="form-group row mb-4">
+		<div class="col-sm-2">
+			<label>Dirección</label>
+		</div>
+		<div class="col-sm-4">
+			@Html.TextBox("Dirección", "", new { @class = "form-control" })
+		</div>
+
+	</div>
+
+	<div class="form-group row mb-4">
+		<div class="col-sm-2">
+			<label>Departamento</label>
+		</div>
+		<div class="col-sm-4">
+			@Html.DropDownList("id", ViewData["listadoDepartamento"] as SelectList, "Seleccione un departamento", new { @class = "form-control" })
+		</div>
+		<div class="col-sm-2">
+			@Html.Label("lblPuesto", "Puesto")
+		</div>
+		<div class="col-sm-4">
+			@Html.DropDownList("id", ViewData["listadoDePuestos"] as SelectList, "Seleccione un Puesto", new { @class = "form-control" })
+		</div>
+	</div>
+
+	<div class="form-group row mb-4">
+		<div class="col-sm-2">
+			<label>Genero</label>
+		</div>
+		<div class="col-sm-4">
+			@Html.RadioButton("Genero", "Masculino", true, new{id = "masculino"})
+			Masculino
+
+			@Html.RadioButton("Genero", "Femenino", false, new { id = "femenino" })
+			Femenino
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+	<div class="form-group row mb-4">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-4">
+			<input type="submit" class="btn btn-primary" value="Guardar" />
+		</div>
+	</div>
+
+	@*Tabla*@
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Nombre Completo</th>
+				<th>Email</th>
+				<th>Dirección</th>
+				<th>Departamento</th>
+				<th>Genero</th>
+				<th>Puesto</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var clientes in (IEnumerable<dynamic>)ViewData["listadoClientes"])
+			{
+				<tr>
+					<td>@clientes.Nombre Completo</td>
+					<td>@clientes.Email</td>
+					<td>@clientes.Dirección</td>
+					<td>@clientes.Departamento</td>
+					<td>@clientes.Genero</td>
+					<td>@clientes.Puesto</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+	@*Fin del formulario*@
+</form>
+
