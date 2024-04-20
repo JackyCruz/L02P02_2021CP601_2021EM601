@@ -16,6 +16,7 @@
 		<div class="col-sm-4">
 			@Html.TextBox("Apellido", "", new { @class = "form-control" })
 		</div>
+
 	</div>
 
 	<div class="form-group row mb-4">
@@ -67,14 +68,14 @@
 
 
 
-
-
-
-
-
-
-
-
+	<div class="col-md-6">
+		<div class="form-group">
+			<label for="imagen">Imagen de perfil:</label>
+			<input type="file" class="form-control-file" id="imagen" accept="image/*">
+		</div>
+		<div class="preview-image" id="preview"></div>
+	</div>
+	</div>
 
 	<div class="form-group row mb-4">
 		<div class="col-sm-2"></div>
@@ -82,7 +83,6 @@
 			<input type="submit" class="btn btn-primary" value="Guardar" />
 		</div>
 	</div>
-
 	@*Tabla*@
 	<table class="table table-striped">
 		<thead>
@@ -105,6 +105,7 @@
 					<td>@clientes.departamentos</td>
 					<td>@clientes.Genero</td>
 					<td>@clientes.Puesto</td>
+					<td><button onclick="eliminar(<%= row[" Id"] %>Eliminar</button></td>
 				</tr>
 			}
 		</tbody>
